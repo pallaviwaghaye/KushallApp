@@ -1,0 +1,51 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>Settings<span item-end></span>
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="bg-black">
+	<div style="height: 50px;padding-bottom: 20px;">	
+		<div class="shedular-div settings">
+			<h3>Remote Access</h3>
+			<ion-toggle ion-toggle-text ion-toggle-text ng-true-value="on" ng-false-value="off"></ion-toggle>
+		</div>
+	</div>
+
+	<div style="height: 50px;">	
+		<div class="shedular-div settings">
+			<h3>Privacy Policy</h3>
+			<ion-icon class="primary-text" style="font-size: 30px;" name="ios-arrow-forward-outline" [class.active]="arr1" (click)="privacyPolicy()"></ion-icon>
+		</div>
+	</div>
+	<div style="height: 50px;">	
+		<div class="shedular-div settings">
+			<h3>Terms of use</h3>
+			<ion-icon class="primary-text" style="font-size: 30px;" name="ios-arrow-forward-outline" [class.active]="arr1" (click)="termsOfUse()"></ion-icon>
+		</div>
+	</div>
+	<div style="height: 50px;">	
+		<div class="shedular-div settings">
+			<h3>Support</h3>
+			<ion-icon class="primary-text" style="font-size: 30px;" name="ios-arrow-forward-outline" [class.active]="arr1" (click)="Support()"></ion-icon>
+		</div>
+	</div>
+
+	<div style="height:50px;">	
+		<div class="shedular-div settings">
+			<h3>Feedback</h3>
+			<ion-icon class="primary-text" style="font-size: 30px;" name="ios-arrow-forward-outline" [class.active]="arr1" (click)="Feedback()"></ion-icon>
+		</div>
+	</div>
+
+	<div>	
+		<div class="shedular-div settings">
+			<h3>Logout</h3>
+			<ion-icon class="primary-text" style="font-size: 30px;" name="md-log-out" [class.active]="arr1" (click)="Logout()"></ion-icon>
+		</div>
+	</div>
+
+
+</ion-content>

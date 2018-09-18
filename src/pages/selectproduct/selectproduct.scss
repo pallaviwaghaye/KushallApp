@@ -1,0 +1,31 @@
+page-selectproduct {
+	.list-item ion-avatar{
+	    box-shadow: none;
+	    margin: 0 auto;
+	    border: 1px solid #ddd;
+	    border-radius: 50%;
+	    width: 65px;
+		height: 65px;
+	}
+	.scroll-content { padding: 16px 10px !important;}
+
+	.list-item ion-avatar img {
+	   	width: 44px;
+		height: 50px;
+		display: block;
+		margin: 7px auto;
+	}
+	.list-item.item-md.item-block .item-inner,.list-item.item-ios.item-block .item-inner{
+		padding-right:0;
+	}
+	.list-item .item-name ion-label {
+	    font-size: 14px;
+	    white-space: normal;
+	}
+	.list-md .item-block .item-inner,.list-ios .item-block .item-inner{border:none;}
+	.list-item { border-bottom: 1px solid #f2f2f2;padding: 10px 0;}
+	.list-item:first-child { border-top: 1px solid #f2f2f2;}
+	.label-md,.label-ios { margin: 12px 8px 12px 0;}
+	.item-md ion-icon[item-left], .item-md ion-icon[item-right], .item-md ion-icon[item-start], .item-md ion-icon[item-end],.item-ios ion-icon[item-left], .item-ios ion-icon[item-right], .item-ios ion-icon[item-start], .item-ios ion-icon[item-end] { color: $primarycolor;}
+	.item-md,.item-ios{color:#fff;}
+}

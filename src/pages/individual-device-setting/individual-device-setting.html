@@ -1,0 +1,44 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>Device Settings<span item-end></span>
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="bg-black">
+	<div style="height: 50px;padding-bottom: 20px;">	
+		<div class="shedular-div settings">
+			<h3>Device Name</h3>
+			<ion-icon class="primary-text" style="font-size: 30px;" name="ios-arrow-forward-outline" [class.active]="arr1" (click)="DeviceName()"></ion-icon>
+		</div>
+	</div>
+
+	<div style="height: 50px;">	
+		<div class="shedular-div settings">
+			<h3>Device Location</h3>
+			<ion-icon class="primary-text" style="font-size: 30px;" name="ios-arrow-forward-outline" [class.active]="arr1" (click)="DeviceLocation()"></ion-icon>
+		</div>
+	</div>
+	<div style="height: 50px;">	
+		<div class="shedular-div settings">
+			<h3>Firmware Update</h3>
+			<ion-icon class="primary-text" style="font-size: 30px;" name="ios-arrow-forward-outline" [class.active]="arr1" (click)="FirmwareUpdate()"></ion-icon>
+		</div>
+	</div>
+	<div style="height: 50px;">	
+		<div class="shedular-div settings">
+			<h3>Reset Device</h3>
+			<ion-icon class="primary-text" style="font-size: 30px;" name="ios-arrow-forward-outline" [class.active]="arr1" (click)="ResetDevice()"></ion-icon>
+		</div>
+	</div>
+
+	<div style="height:50px;">	
+		<div class="shedular-div settings">
+			<h3>Delete Device</h3>
+			<ion-icon class="primary-text" style="font-size: 30px;" name="ios-arrow-forward-outline" [class.active]="arr1" (click)="DeleteDevice()"></ion-icon>
+		</div>
+	</div>
+
+
+</ion-content>

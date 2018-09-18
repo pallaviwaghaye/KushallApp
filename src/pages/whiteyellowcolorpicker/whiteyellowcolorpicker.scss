@@ -1,0 +1,51 @@
+page-whiteyellowcolorpicker {
+	.scroll-content {
+	    margin-top: 50px;margin-bottom: 50px !important;
+	}
+	ion-slide h1 {
+	    font-size: 22px;
+	    margin: 10px 0;
+	}
+	.product-name {
+	    margin: 0;
+	}
+	.imgstatic .item-md.item-block .item-inner{ border: none;padding: 0;}
+	.imgstatic .label-md { margin: 0;}
+	.imgstatic .product-added{padding: 0;border: none;box-shadow: none;}
+	.color-picker.item-md.item-block .item-inner { padding-right: 0;  border-bottom: none;}
+	canvas{display: block; margin:0 auto; width: 230px;height: 230px;border-radius: 50%;}
+	.color-picker .label-md {margin: 0;}
+
+	#wycolorpickerdivId {
+		position: relative;
+		width: 230px;
+		height: 230px;
+		display: block; margin:0 auto;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+	.wypickercursor {
+		width: 40px;
+		height: 40px;
+		left: 50px;
+		top: 50px;
+		background-color: transparent;
+		border: 1px solid transparent;
+		border-radius: 50%;
+		padding: 7px;
+	}
+	.wypickercursor span.outer{
+		display:block;
+		width: 23px;
+		height: 23px;
+		border-radius: 50%;
+		border: 2px solid #000;
+	}
+	.wypickercursor span.inner{
+		display:block;
+		width: 19px;
+		height: 19px;
+		border-radius: 50%;
+		border: 2px solid #fff;
+	}
+}

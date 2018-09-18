@@ -1,0 +1,40 @@
+page-fourswitchonesliderandschedular {
+	.multi-switch ion-icon {
+	    text-align: center;
+	    font-size: 34px;
+	    color: #d4d5d9;
+	}
+	.multi-switch ion-icon.active{
+	    text-align: center;
+	    font-size: 34px;
+	    color: $primarycolor;
+	}
+	.multi-switch button{
+		margin-bottom:0;
+		display:block;
+		margin-top: 10px;
+	}
+	.switch{
+		padding-top: 0;
+		padding-bottom: 0;
+		width: 100%;
+		height: auto;
+		font-size: 20px;
+	}
+	.switch:after {
+	  content: "";
+	  display: block;
+	  padding-bottom: 100%;
+	}
+	.switch:before {
+	  content: "";
+	  display: block;
+	  padding-bottom: 100%;
+	}
+	.multi-switch{
+		width: 21.70%;
+	}
+	.scroll-content { padding: 16px 10px !important;}
+	.four-btn-div{margin-top:20px;}
+	.label-md{margin: 13px 13px 13px 0px;}
+}

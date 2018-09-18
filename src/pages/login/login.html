@@ -1,0 +1,18 @@
+<ion-content padding class="bg-black">
+	<img class="applogo" src="assets/imgs/app-logo.png">
+	<ion-list class="app-form">
+		<h2 class="heading-title primary-text text-center">Welcome</h2>
+		<div style="margin-top: 30px;">
+			<ion-item class="app-input">
+				<ion-input type="email" placeholder="Email address" name="email"></ion-input>
+			</ion-item>
+			<ion-item class="app-input">
+				<ion-input type="{{type}}" placeholder="Password" name="password"></ion-input>
+				<ion-icon (click)="toggleShow()" item-right name="ios-eye-outline"></ion-icon>
+			</ion-item>
+			<p class="error-msg"></p>
+			<button ion-button block class="primary-btn" type="submit" (click)="login()">Sign in</button>
+			<p class="primary-text app-link"><span style="text-align: left;cursor: pointer;" (click)="forgotpassword()">Forgot Password ?</span><span style="cursor: pointer;float: right;display: inline-block;" (click)="signup()">Sign up</span></p>
+		</div>
+	</ion-list>
+</ion-content>

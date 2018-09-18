@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Setup<ion-icon class="headersetting-icon closepage" name="ios-close-outline" (click)="closepage()"></ion-icon></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg-black">
+	<ion-list class="app-form">
+		<div style="padding: 20px 0 10px;">
+			<h2 class="page-head heading-title primary-text text-center">Customise your Kushall device</h2>
+			<p class="text-center otp-note">{{ scannedCode }} </p>
+		</div>
+		<div style="margin-top: 50px;">
+			<ion-item class="app-input">
+				<ion-input type="text" placeholder="Device name" name="devicename"></ion-input>
+			</ion-item>
+			<ion-item class="app-input">
+				<ion-input type="text" placeholder="Device location" name="devicelocation"></ion-input>
+			</ion-item>
+			<p class="error-msg"></p>
+			<button ion-button block class="primary-btn" type="submit" (click)="proccedforwifi()">Proceed</button>
+		</div>
+	</ion-list>
+</ion-content>

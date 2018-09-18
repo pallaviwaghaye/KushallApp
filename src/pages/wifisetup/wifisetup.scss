@@ -1,0 +1,16 @@
+page-wifisetup {
+	.list-item ion-avatar{margin: 0 auto;}
+	.list-item ion-avatar img { width: auto;height: auto;border-radius: 0;}
+	.list-item.item-md.item-block .item-inner{	padding-right:0;}
+	.list-item .item-name ion-label {font-size: 14px;white-space: normal;}
+	.list-md .item-block .item-inner{border:none;}
+	.list-item { border-bottom: 1px solid #f2f2f2;}
+	.list-item:first-child { border-top: 1px solid #f2f2f2;}
+	.list-item.item-md ion-avatar { min-width: auto;  min-height: auto;}
+	.list-item .label-md { margin: 0;}
+	.list-item.item-block{min-height: auto;}
+	.item-md ion-icon[item-left], .item-md ion-icon[item-right], .item-md ion-icon[item-start], .item-md ion-icon[item-end] { color: $primarycolor;}
+	.scroll-content { padding: 16px 10px !important;}
+	.has-refresher > .scroll-content{border-top:none;}
+	.item-md{color:#fff;}
+}

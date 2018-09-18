@@ -1,0 +1,28 @@
+<ion-content padding class="bg-black">
+	<div class="product-div text-center">
+		<ion-item class="product-list-div product-added">
+			<img src="assets/imgs/device-img-1.png">
+		</ion-item>
+		<p class="product-name primary-text">LED Bulb</p>
+	</div>
+	<button [class.active]="switchstatus" ion-button class="float-right switch" (click)="toggleswitch(switchstatusText)">{{switchstatusText}}</button>
+	<div style="clear: both;"></div>
+	<p class="mybadge badge-royal">{{brightnesswy}}%</p>
+	<ion-item>
+	  	<ion-range min="0%" max="100%" pin="true" [(ngModel)]="brightnesswy" (ionChange)="setBadgewy(brightnesswy)">
+	  </ion-range>
+	</ion-item>
+	<ion-item class="color-picker">
+		<div class="main">
+			<!-- <div class="data">
+				<span #wycolboxval class="wycolorval"></span>&nbsp;&nbsp;
+				<span>HEX Value: {{wyhexval}}</span><br>
+			</div> -->
+		 	<div id="wycolorpickerdivId" #wycolorpickerdivId>
+				<p absolute-drag #wydrag class="wypickercursor"><span class="outer"><span class="inner"></span></span></p>
+			 	<canvas width="200" height="200" #wycanvasval>
+			 	</canvas>
+			</div>
+		</div>
+	</ion-item>
+</ion-content>

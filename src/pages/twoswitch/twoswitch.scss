@@ -1,0 +1,21 @@
+page-twoswitch {
+	.multi-switch ion-icon {
+	    text-align: center;
+	    font-size: 34px;
+	    color: #d4d5d9;
+	}
+	.multi-switch ion-icon.active{
+	    text-align: center;
+	    font-size: 34px;
+	    color: $primarycolor;
+	}
+	.multi-switch button{
+		margin-bottom:0;
+		display:block;
+	}
+	.multi-switch{display:inline-block;}
+	.two-btn-div{display: block;margin: 0 auto;width: 215px;clear: both;margin-top: 20px;}
+	.scroll-content { padding: 16px 10px !important;}
+	.button-inner {padding-top: 0;}
+	.label-md{margin: 13px 13px 13px 0px;}
+}

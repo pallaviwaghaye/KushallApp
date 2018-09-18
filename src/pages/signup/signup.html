@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg-black">
+	<img class="applogo no-paddingtop" src="assets/imgs/app-logo.png">
+	<ion-list class="app-form">
+		<h2 style="margin-bottom: 20px;" class="heading-title primary-text text-center">Create Account</h2>
+		<div style="margin-top: 30px;">
+			<ion-item class="app-input">
+				<!-- <ion-icon name="ios-mail-outline" item-start></ion-icon> -->
+				<ion-input type="email" placeholder="Email address" name="email"></ion-input>
+			</ion-item>
+			<ion-item class="app-input">
+				<!-- <ion-icon name="ios-unlock-outline" item-start></ion-icon> -->
+				<ion-input type="password" placeholder="Password" name="password"></ion-input>
+			</ion-item>
+			<ion-item class="app-input">
+				<!-- <ion-icon name="ios-unlock-outline" item-start></ion-icon> -->
+				<ion-input type="cpassword" placeholder="Confirm password" name="cpassword"></ion-input>
+			</ion-item>
+			<p class="error-msg"></p>
+			<button ion-button block class="primary-btn" type="submit" (click)="register()">Sign up</button>
+			<p class="text-center app-link">See <span>Privacy Policy</span> & <span>Term of use</span></p>
+		</div>
+	</ion-list>
+</ion-content>

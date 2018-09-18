@@ -1,14 +1,60 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<ion-title>Home 
+			<span class="cust-gear headersetting-icon" (click)="mainSettings()" item-end>
+				
+			</span>
+		</ion-title>
+	</ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding class="bg-black">
+	<div class="product-div text-center" (click)="singleswitch()">
+		<ion-item class="product-list-div product-added">
+			<img src="assets/imgs/device-img-1.png">
+		</ion-item>
+		<p class="product-name primary-text"><span>Single Switch</span></p>
+	</div>
+	<div class="product-div text-center" (click)="singleswitchwithslider()">
+		<ion-item class="product-list-div product-added">
+			<img src="assets/imgs/device-img-2.png">
+		</ion-item>
+		<p class="product-name primary-text"><span>Single Switch With Slider</span></p>
+	</div>
+	<div class="product-div text-center" (click)="twoswitch()">
+		<ion-item class="product-list-div product-added">
+			<img src="assets/imgs/device-img-2.png">
+		</ion-item>
+		<p class="product-name primary-text"><span>Two Switch</span></p>
+	</div>
+<!-- 	<div class="product-div text-center" (click)="fourswitchonlyshedular()">
+		<ion-item class="product-list-div product-added">
+			<img src="assets/imgs/device-img-2.png">
+		</ion-item>
+		<p class="product-name primary-text"><span>Four Switch Only Shedular</span></p>
+	</div> -->
+	<div class="product-div text-center" (click)="fourswitchonesliderandshedular()">
+		<ion-item class="product-list-div product-added">
+			<img src="assets/imgs/device-img-2.png">
+		</ion-item>
+		<p class="product-name primary-text"><span>Four Switch</span></p>
+	</div>
+	<div class="product-div text-center" (click)="eightswaitch()">
+		<ion-item class="product-list-div product-added">
+			<img src="assets/imgs/device-img-2.png">
+		</ion-item>
+		<p class="product-name primary-text"><span>Eight Switch</span></p>
+	</div>
+	<div class="product-div text-center" (click)="colorpickerslide()">
+		<ion-item class="product-list-div product-added">
+			<img src="assets/imgs/device-img-2.png">
+		</ion-item>
+		<p class="product-name primary-text"><span>LED Bulb</span></p>
+	</div>
+	<div class="product-div text-center" (click)="selectproduct()">
+		<ion-item class="product-list-div">
+			<ion-icon name="md-add"></ion-icon>
+		</ion-item>
+		<p class="product-name primary-text">Add Product</p>
+	</div>
 </ion-content>

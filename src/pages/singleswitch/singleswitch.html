@@ -1,0 +1,45 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>Single Switch 
+			<span class="cust-gear headersetting-icon" (click)="individualSettings()" item-end></span>
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="bg-black">
+	<div class="product-div text-center">
+		<ion-item class="product-list-div product-added">
+			<img src="assets/imgs/device-img-1.png">
+		</ion-item>
+		<p class="product-name primary-text">Single Switch</p>
+	</div>
+	<button [class.active]="switchstatus" ion-button class="float-right switch" (click)="toggleswitch(switchstatusText)">{{switchstatusText}}</button>
+	<div style="clear: both;"></div>
+	<div style="height: 38px;">	
+		<div class="shedular-div">
+			<h3>Scheduler</h3>
+			<ion-toggle ion-toggle-text ion-toggle-text ng-true-value="on" ng-false-value="off" (ionChange)="changeshedule()"></ion-toggle>
+		</div>
+	</div>
+	<div *ngIf="showschedule" style="width: 300px;margin: 0 auto">
+		<div class="weekdays-div" style="margin-top: 50px;" >
+			<div class="weekday" [class.selected]="isBtnActive1" (click)="toggleClass(1)">SU</div>
+			<div class="weekday" [class.selected]="isBtnActive2" (click)="toggleClass(2)">MO</div>
+			<div class="weekday" [class.selected]="isBtnActive3" (click)="toggleClass(3)">TU</div>
+			<div class="weekday" [class.selected]="isBtnActive4" (click)="toggleClass(4)">WE</div>
+			<div class="weekday" [class.selected]="isBtnActive5" (click)="toggleClass(5)">TH</div>
+			<div class="weekday" [class.selected]="isBtnActive6" (click)="toggleClass(6)">FR</div>
+			<div class="weekday" [class.selected]="isBtnActive7" (click)="toggleClass(7)">SA</div>
+		</div>
+		<ion-item class="no-padding first shadule-timepicker">
+	        <ion-label>Start Time</ion-label>
+	        <ion-datetime displayFormat="hh:mm A" placeholder="Start Time" name="starttime"></ion-datetime>
+	    </ion-item>
+	    <ion-item class="no-padding shadule-timepicker">
+	        <ion-label>End Time</ion-label>
+	        <ion-datetime displayFormat="hh:mm A" placeholder="End Time" name="endttime"></ion-datetime>
+	    </ion-item>
+	    <button ion-button block class="primary-btn" type="submit">Save Schedule</button>
+	</div>
+</ion-content>

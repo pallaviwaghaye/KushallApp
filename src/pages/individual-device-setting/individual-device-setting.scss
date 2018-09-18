@@ -1,0 +1,20 @@
+page-individual-device-setting {
+	  .alertCustomCss{
+	  background-color: white;
+	  color: blue;
+	  button{
+	      color: blue;
+	  }
+	}
+	.text-center{
+	 text-align: centre;
+	}
+
+	.progress-bar {
+		background:#fff;
+	    -webkit-animation: progress-bar-stripes 2s linear infinite;
+	    -o-animation: progress-bar-stripes 2s linear infinite;
+	    /* animation: progress-bar-stripes 2s linear infinite; */
+	}
+	.bg-black .shedular-div{margin-top: -20px;}
+}

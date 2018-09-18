@@ -1,0 +1,29 @@
+<ion-content padding class="bg-black">
+	<div class="product-div text-center">
+		<ion-item class="product-list-div product-added">
+			<img src="assets/imgs/device-img-1.png">
+		</ion-item>
+		<p class="product-name primary-text">LED Bulb</p>
+	</div>
+	<button [class.active]="switchstatus" ion-button class="float-right switch" (click)="toggleswitch(switchstatusText)">{{switchstatusText}}</button>
+	<div style="clear: both;"></div>
+	<p class="mybadge badge-royal">{{brightnessrgb}}%</p>
+	<ion-item>
+	  	<ion-range min="0%" max="100%" pin="true" [(ngModel)]="brightnessrgb" (ionChange)="setBadgergb(brightnessrgb)"></ion-range>
+	</ion-item>
+	<ion-item class="color-picker">
+			
+		<div class="main">
+			<div class="data">
+				<!-- <span #colboxval class="colorval"></span>&nbsp;&nbsp; -->
+<!-- 				<span>HEX Value: {{hexval}}</span><br>
+				<span>RGBA Value: {{rgbaval}}</span> -->
+			</div>
+		 	<div id="colorpickerdivId" #colorpickerdivId>
+			    <p absolute-drag #drag class="pickercursor"><span class="outer"><span class="inner"></span></span></p>
+			 	<canvas width="230" height="230" #canvasval >
+			 	</canvas>
+			</div>
+		</div>
+	</ion-item>
+</ion-content>

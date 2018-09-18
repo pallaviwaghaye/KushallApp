@@ -1,0 +1,6 @@
+page-feedback {
+	.item-inner{border: 1px solid #ffffff;padding: 8px;}
+	.item-inner:focus{border: 1px solid blue;}
+	.label{padding:0;margin:0;}
+	.item-md.item-input.item-input-has-focus .item-inner, .item-md.item-input.input-has-focus .item-inner{border-color: #488aff;}
+}

@@ -1,0 +1,64 @@
+page-wifiloader {
+	.waves-div{
+		position:relative;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		width: 100%;
+		min-height: 260px;
+	}
+	.waves {
+	  	height: 120px;
+		width: 120px;
+	  	border-radius:50%;
+	  	background:#d4f3fe;
+	  
+		position:relative;
+		top:80px;
+		left:0;
+		right:0;
+		margin: 0 auto;
+		-webkit-transition:height .25s ease, width .25s ease;
+		transition:height .25s ease, width .25s ease;
+	}
+	h2{font-size: 18px;}
+
+	.waves:before,
+	.waves:after {
+		content:'';
+		display:block;
+		position:absolute;
+		top:0; right:0; bottom:0; left:0;
+		border-radius:50%;
+		background:#d4f3fe;margin: 0 auto;
+	}
+
+	.waves:before {
+		-webkit-animation: ripple 2s linear infinite;
+		animation: ripple 2s linear infinite;
+	}
+	.waves:after {
+		-webkit-animation: ripple 2s linear 1s infinite;
+		animation: ripple 2s linear 1s infinite;
+	}
+
+	@-webkit-keyframes ripple{
+		0% {-webkit-transform:scale(1); }
+		75% {-webkit-transform:scale(1.75); opacity:1;}
+		100% {-webkit-transform:scale(2); opacity:0;}
+	}
+
+	@keyframes ripple{
+		0% {transform:scale(1); }
+		75% {transform:scale(1.75); opacity:1;}
+		100% {transform:scale(2); opacity:0;}
+	}
+	.waves-div img {
+	    position: absolute;
+	    z-index: 1;
+	    width: 85%;
+	    left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+}

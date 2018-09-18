@@ -1,0 +1,11 @@
+<ion-header style="z-index: 1000;">
+  <ion-navbar>
+    <ion-title>Add New Product <ion-icon class="headersetting-icon closepage" name="ios-close-outline" (click)="closepage()"></ion-icon></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg-black">
+	<img class="scanner-img" src="assets/imgs/scannerbg.png">
+	<p class="text-center">Click "Scan" button to scan the QR code at the back of your device</p>
+	<button ion-button block class="primary-btn" type="submit" (click)="scan()">Scan</button>
+</ion-content>

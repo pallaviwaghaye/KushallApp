@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add New Product <ion-icon class="headersetting-icon closepage" name="ios-close-outline" (click)="closepage()"></ion-icon></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="bg-black">
+	<div style="padding: 20px 0 10px;">
+		<h2 class="page-head heading-title primary-text text-center">Select your product</h2>
+		<p class="text-center otp-note">Please select your new kushall product</p>
+	</div>
+	<ion-list>
+		<ion-item class="list-item" (click)="selectitem()">
+			<ion-avatar class="no-margin" item-start>
+		      <img src="assets/imgs/device-img-1.png">
+		    </ion-avatar>
+			<button ion-item class="item-name">Automatic Light Control Device</button> 
+			<ion-icon class="primary-text" name="ios-arrow-forward-outline" item-end></ion-icon>
+		</ion-item>
+		<ion-item class="list-item" (click)="scanBarcode()">
+			<ion-avatar class="no-margin" item-start>
+		      <img src="assets/imgs/device-img-2.png">
+		    </ion-avatar>
+			<button ion-item class="item-name">Automatic lamp Control Device</button> 
+			<ion-icon class="primary-text" name="ios-arrow-forward-outline" item-end></ion-icon>
+		</ion-item>
+	</ion-list>
+</ion-content>
