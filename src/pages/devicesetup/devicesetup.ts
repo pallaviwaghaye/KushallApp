@@ -18,8 +18,10 @@ import { WifisetupPage } from '../../pages/wifisetup/wifisetup';
 export class DevicesetupPage {
 
   public scannedCode:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public params: NavParams) {
+  
+  constructor(public navCtrl: NavController, public params: NavParams) {
     this.scannedCode = params.get('scannedCode');
+    //this.DeviceData = params.get('deviceData');
   }
 
   ionViewDidLoad() {

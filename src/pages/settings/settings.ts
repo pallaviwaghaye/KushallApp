@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Platform,LoadingController,AlertController } from 'ionic-angular';
 
 import { PrivacypolicyPage } from '../../pages/privacypolicy/privacypolicy';
 import { TermsofusePage } from '../../pages/termsofuse/termsofuse';
@@ -23,7 +23,7 @@ import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser'
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public alertCtrl: AlertController,public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams,
     private inAppBrowser: InAppBrowser,public platform: Platform) {
   }
 
@@ -88,9 +88,42 @@ export class SettingsPage {
 
   Logout()
   {
-    this.navCtrl.push(LoginPage);
-  }
+      let alert = this.alertCtrl.create({
+                      title: 'Logout',
+                      subTitle: 'Do you want to logout ?',
+                      buttons: [
+                      {
+                          text: 'Ok',
+                          handler: () => {
+                              localStorage.removeItem('access_token');
+                              let loader = this.loadingCtrl.create({
+                                content: "Please wait...",
+                                duration: 2000,
+                              });
+                              loader.present();
+                              setTimeout(() => {
+                                      this.navCtrl.setRoot(LoginPage);
+                                  }, 2000);
+                              //this.navCtrl.push(LoginPage);
+                          }
+                      }
+                      ]
+                    });
+                    alert.present();
 
 
+    /*localStorage.removeItem('access_token');
+    let loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 2000,
+    });
+    loader.present();
+    setTimeout(() => {
+            this.navCtrl.setRoot(LoginPage);
+        }, 2000);
+    //this.navCtrl.push(LoginPage);
+  }*/
+
+}
 
 }

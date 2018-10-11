@@ -9,7 +9,7 @@
 </ion-header>
 
 <ion-content padding class="bg-black">
-	<div class="product-div text-center" (click)="singleswitch()">
+	<!-- <div class="product-div text-center" (click)="singleswitch()">
 		<ion-item class="product-list-div product-added">
 			<img src="assets/imgs/device-img-1.png">
 		</ion-item>
@@ -27,12 +27,12 @@
 		</ion-item>
 		<p class="product-name primary-text"><span>Two Switch</span></p>
 	</div>
-<!-- 	<div class="product-div text-center" (click)="fourswitchonlyshedular()">
+	<div class="product-div text-center" (click)="fourswitchonlyshedular()">
 		<ion-item class="product-list-div product-added">
 			<img src="assets/imgs/device-img-2.png">
 		</ion-item>
 		<p class="product-name primary-text"><span>Four Switch Only Shedular</span></p>
-	</div> -->
+	</div>
 	<div class="product-div text-center" (click)="fourswitchonesliderandshedular()">
 		<ion-item class="product-list-div product-added">
 			<img src="assets/imgs/device-img-2.png">
@@ -51,6 +51,64 @@
 		</ion-item>
 		<p class="product-name primary-text"><span>LED Bulb</span></p>
 	</div>
+ -->
+	 <!-- <ion-list *ngFor="let device of data">
+		<ion-item *ngIf="device != null; else elseBlock" class="no-padding">
+			<div class="product-div text-center" (click)="twoswitch()">
+				<ion-item class="product-list-div product-added">
+					<img src="assets/imgs/device-img-2.png">
+				</ion-item>
+				<p *ngIf="data == 0" class="product-name primary-text"><span>{{data.friendlyName}}</span></p>
+			</div>
+
+			<div class="product-div text-center" (click)="colorpickerslide()">
+				<ion-item class="product-list-div product-added">
+					<img src="assets/imgs/device-img-2.png">
+				</ion-item>
+				<p *ngIf="data == 1" class="product-name primary-text"><span>{{data.friendlyName}}</span></p>
+			</div>
+
+		    <img src="assets/imgs/device-img-2.png">
+		    <h2>{{data.endpointId}}</h2>
+		    <p  *ngIf="data == 0">{{data.friendlyName}}</p>
+    		<p  *ngIf="data == 1">{{data.friendlyName}}</p>
+    		<p  *ngIf="data == 2">{{data.friendlyName}}</p>
+            <p  *ngIf="data == 3">{{data.friendlyName}}</p>
+            
+		</ion-item>
+		<ng-template #elseBlock>
+	    	<div class="product-div text-center" (click)="selectproduct()">
+				<ion-item class="product-list-div">
+					<ion-icon name="md-add"></ion-icon>
+				</ion-item>
+				<p class="product-name primary-text">Add Product</p>
+			</div>
+		</ng-template>
+    </ion-list>
+ -->
+    <div class="product-div text-center" *ngFor="let item of items" (click)="colorpickerslide()">
+		<ion-item class="product-list-div product-added">
+			<img src="assets/imgs/device-img-2.png">
+		</ion-item>
+		<p class="product-name primary-text"><span>{{item.endpointId}}</span></p>
+	</div>
+
+ 	<!-- <ion-card class="cardconteudo" *ngFor="let item of items">
+		<div class="product-div text-center" >
+		<ion-item class="product-list-div product-added">
+			<img src="assets/imgs/device-img-2.png">
+		</ion-item>
+		<ion-card-content>
+			<ion-card-title class="product-name primary-text">
+				{{item.endpointId}}
+			</ion-card-title>
+			<p class="product-name primary-text">
+				{{item.friendlyName}}
+			</p>
+		</ion-card-content>
+		</div>
+	</ion-card> -->
+
 	<div class="product-div text-center" (click)="selectproduct()">
 		<ion-item class="product-list-div">
 			<ion-icon name="md-add"></ion-icon>

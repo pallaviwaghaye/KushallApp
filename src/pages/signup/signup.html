@@ -11,17 +11,17 @@
 		<div style="margin-top: 30px;">
 			<ion-item class="app-input">
 				<!-- <ion-icon name="ios-mail-outline" item-start></ion-icon> -->
-				<ion-input type="email" placeholder="Email address" name="email"></ion-input>
+				<ion-input type="email" placeholder="Email address" name="email" [(ngModel)]="data.email"></ion-input>
 			</ion-item>
 			<ion-item class="app-input">
 				<!-- <ion-icon name="ios-unlock-outline" item-start></ion-icon> -->
-				<ion-input type="password" placeholder="Password" name="password"></ion-input>
+				<ion-input type="password" placeholder="Password" name="password" [(ngModel)]="data.password"></ion-input>
 			</ion-item>
 			<ion-item class="app-input">
 				<!-- <ion-icon name="ios-unlock-outline" item-start></ion-icon> -->
-				<ion-input type="cpassword" placeholder="Confirm password" name="cpassword"></ion-input>
+				<ion-input type="number" placeholder="Mobile number" name="mobile" [(ngModel)]="data.mobile"></ion-input>
 			</ion-item>
-			<p class="error-msg"></p>
+			<p class="error-msg">{{error}}</p>
 			<button ion-button block class="primary-btn" type="submit" (click)="register()">Sign up</button>
 			<p class="text-center app-link">See <span>Privacy Policy</span> & <span>Term of use</span></p>
 		</div>

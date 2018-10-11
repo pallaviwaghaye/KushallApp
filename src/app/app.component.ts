@@ -30,7 +30,7 @@ import { ColorpickersliderPage } from '../pages/colorpickerslider/colorpickersli
 import { PrivacypolicyPage } from '../pages/privacypolicy/privacypolicy';
 import { TermsofusePage } from '../pages/termsofuse/termsofuse';
 import { SupportPage } from '../pages/support/support';
-import { FeedbackPage } from '../pages/feedback/feedback';
+//import { FeedbackPage } from '../pages/feedback/feedback';
 
 @Component({
   templateUrl: 'app.html'
@@ -39,12 +39,25 @@ export class MyApp {
   rootPage:any = LoginPage;
   public networkalert:any;
 
-   constructor(platform: Platform, statusBar: StatusBar,private network: Network, splashScreen: SplashScreen,public alertCtrl: AlertController) {
+   constructor(platform: Platform, statusBar: StatusBar,private network: Network, 
+    splashScreen: SplashScreen,public alertCtrl: AlertController) 
+   {
+
+    var user = localStorage.getItem("access_token");
+    if (user) {
+      this.rootPage = HomePage;
+    } else {
+      this.rootPage = LoginPage;
+    }
+
+   
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      splashScreen.hide();
+      setTimeout(() => {
+        splashScreen.hide();
+    }, 100);
 
       let disconnectSubscription  = this.network.onDisconnect().subscribe(() => {
           this.networkalert = this.alertCtrl.create({

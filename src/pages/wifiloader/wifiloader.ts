@@ -15,9 +15,12 @@ import { HomePage } from '../../pages/home/home';
   templateUrl: 'wifiloader.html',
 })
 export class WifiloaderPage {
-
+    public DeviceData:any;
   	constructor(public navCtrl: NavController, public navParams: NavParams) {
   		this.loading();
+      this.DeviceData = localStorage.getItem('Devicedata');
+      console.log('wifiloader : ',this.DeviceData);
+      alert(this.DeviceData);
   	}
 
   	ionViewDidLoad() {
@@ -27,6 +30,7 @@ export class WifiloaderPage {
   	loading(){
   		setTimeout(() => {
   			this.navCtrl.setRoot(HomePage);
+        //this.navCtrl.setRoot(HomePage,{deviceData:this.DeviceData});
   		}, 2000);
   	}
 

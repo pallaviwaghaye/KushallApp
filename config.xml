@@ -92,6 +92,12 @@
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
     <allow-navigation href="http://192.168.0.114:8101" />
     <allow-navigation href="http://192.168.0.114:8102" />
-    <engine name="android" spec="7.0.0" />
+    <allow-navigation href="http://192.168.0.101:8101" />
+    <allow-navigation href="http://192.168.0.101:8102" />
+    <allow-navigation href="http://192.168.0.101:8103" />
+    <allow-navigation href="http://192.168.29.51:8104" />
+    <allow-navigation href="http://192.168.29.51:8105" />
+    <allow-navigation href="http://192.168.29.51:8106" />
     <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="7.1.1" />
 </widget>

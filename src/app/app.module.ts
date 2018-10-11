@@ -13,7 +13,7 @@ import { FirmwareupdatePage } from '../pages/firmwareupdate/firmwareupdate';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Network } from '@ionic-native/network';
 import { Hotspot, HotspotNetwork } from '@ionic-native/hotspot';
-import { HttpModule } from '@angular/http';
+
 
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -45,6 +45,8 @@ import { SupportPage } from '../pages/support/support';
 import { FeedbackPage } from '../pages/feedback/feedback';
 
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { ApiProvider } from '../providers/api/api';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -84,7 +86,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -129,9 +131,10 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     BarcodeScanner,
     Hotspot,
     InAppBrowser,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ApiProvider
   ]
 })
 export class AppModule {
-   public static API_ENDPOINT = 'https://alexa.iocare.in'
+   public static API_ENDPOINT = 'https://api.kushall.com/api/v1'
 }

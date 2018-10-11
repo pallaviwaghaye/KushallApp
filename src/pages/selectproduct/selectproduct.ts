@@ -16,10 +16,17 @@ import { ScannerPage } from '../../pages/scanner/scanner';
   templateUrl: 'selectproduct.html',
 })
 export class SelectproductPage {
+  
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    
     }
 
   ionViewDidLoad() {
+      /*this.events.subscribe('deviceCategory', (data) => {
+      this.category = this.data.deviceCategory;
+      console.log('Device added', data);
+    })*/
     console.log('ionViewDidLoad SelectproductPage');
   }
 
@@ -27,6 +34,7 @@ export class SelectproductPage {
   	this.navCtrl.setRoot(HomePage);
   }
   selectitem(){
+
     this.navCtrl.push(ScannerPage);
   }
   scanBarcode(){

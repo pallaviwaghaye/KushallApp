@@ -19,7 +19,10 @@ export class ScannerPage {
 
 public scanSub:any;
 	public options:any;
+	//public deviceData:any;
   	constructor(public navCtrl: NavController, public navParams: NavParams,public barcodeScanner: BarcodeScanner) {
+  		//this.deviceData = navParams.get('Devicedata');
+  		//console.log(this.deviceData);
   	}
 
   	ionViewDidLoad() {
@@ -31,6 +34,7 @@ public scanSub:any;
 	}
 
   	scan(){
+  		//var device = this.deviceData;
 	    this.options = {
 	        prompt : "Scan the QR code at the back of your device"
 	    }
