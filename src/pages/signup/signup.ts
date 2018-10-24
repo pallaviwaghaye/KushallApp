@@ -22,15 +22,17 @@ export class SignupPage {
   public error: any = "";
   public loading: any;
   public emailerror:any;
-  public mobileerror:any;
+  //public mobileerror:any;
   public responseData:any;
 
+  /*"Email":"pallavi.waghaye@webakruti.in",
+  "Pass":"pal@123"*/
 
  constructor(public apiProvider: ApiProvider,public alertCtrl: AlertController,public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams) {
       this.data = {};
-      this.data.email = '';
-      this.data.password = '';
-      this.data.mobile = '';
+      this.data.Email = '';
+      this.data.Pass = '';
+      /*this.data.mobile = '';*/
       this.responseData = {};    
 
   }
@@ -129,9 +131,9 @@ export class SignupPage {
   register(){
 
         this.error = "";
-          if((this.data.email && this.data.password ) == ""){
-              this.error = "Please Enter Email, password ";
-          }else{
+          if((this.data.Email && this.data.Pass ) == ""){
+            this.error = "Please Enter Email, password ";
+        }else{
 
             this.loading = this.loadingCtrl.create({
                       content: "Please wait..."
@@ -141,8 +143,17 @@ export class SignupPage {
 
            // var data = 'email=' + this.data.email + '&password=' + this.data.password + '&mobile=' + this.data.mobile;
            // var data = JSON.stringify({email: this.data.email, password: this.data.password,mobile: this.data.mobile});
-            var data = {email: this.data.email, password: this.data.password,mobile: this.data.mobile};
-            
+            var data = {email: this.data.Email, password: this.data.Pass};
+            var email = this.data.Email;
+            var emailerror ="";
+            var validemail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          if (!validemail.test(email)) {
+
+            this.error = "Enter correct email"; 
+            this.loading.dismiss();
+          }else{
+            this.error = ""; 
+
             this.apiProvider.registration(this.data).then((result) =>
               {
                     this.responseData = result;
@@ -161,7 +172,7 @@ export class SignupPage {
 
             }, error => {
                     this.loading.dismiss();
-                    if(this.error!= null)
+                    if(this.error != null)
                     {
                       let alert = this.alertCtrl.create({
                       title: 'SORRY',
@@ -189,6 +200,7 @@ export class SignupPage {
                     console.log(this.error);
             });
   }
+}
 }
 
   /*login(){

@@ -26,6 +26,7 @@ export class LoginPage {
   data: any;
   loading:any;
   access_token:any;
+  client_id:any;
   responseData : any;
   //var error ="";
   //var emailerror ="";
@@ -33,10 +34,11 @@ export class LoginPage {
  constructor(public toastCtrl : ToastController,public alertCtrl: AlertController,public loadingCtrl: LoadingController,
   public navCtrl: NavController, public navParams: NavParams,public apiProvider: ApiProvider) {
     this.data = {};
-    this.data.username = '';
-    this.data.password = '';
+    this.data.Email = '';
+    this.data.Pass = '';
     this.responseData = {};
    // this.Users();
+    this.data.client_id = 'RKkWfsi0Z9';
   
   }
 
@@ -91,8 +93,9 @@ export class LoginPage {
   login()
   {
      //this.navCtrl.setRoot(HomePage);
+      
       this.error = "";
-        if((this.data.username && this.data.password) == ""){
+        if((this.data.Email && this.data.Pass) == ""){
             this.error = "Please enter username and password";
         }else{
             this.loading = this.loadingCtrl.create({
@@ -102,13 +105,16 @@ export class LoginPage {
 
             //var data = 'username=' + this.data.username + '&password=' + this.data.password;
             //var data = JSON.stringify({username: this.data.username, password: this.data.password});
-            var data = {username: this.data.username, password: this.data.password};
+            var data = {username: this.data.Email, password: this.data.Pass, client_id: this.data.client_id};
+             console.log(data);
+             //localStorage.setItem('Emailid', username);
 
               this.apiProvider.loginUser(this.data).then((result) =>
               {
                     this.responseData = result;
                     console.log(this.responseData);
                     this.loading.dismiss();
+                    //localStorage.setItem('Emailid', this.data.Email);
                     localStorage.setItem('access_token', this.responseData.access_token);
                     this.navCtrl.setRoot(HomePage);
               },error =>{

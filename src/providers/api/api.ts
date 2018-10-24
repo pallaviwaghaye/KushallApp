@@ -47,7 +47,7 @@ export class ApiProvider {
 			headers = headers.append("Accept", 'application/json');
 			headers = headers.append('Content-Type', 'application/json');
 
-			this.http.post(this.apiUrl+'/api/v1/api-login',JSON.stringify(data),{headers: headers}).subscribe(rdata => {
+			this.http.post(this.apiUrl+'/signin',JSON.stringify(data),{headers: headers}).subscribe(rdata => {
 				resolve(rdata);
 			}, err => {
 				console.log(err);
@@ -65,7 +65,7 @@ export class ApiProvider {
 			headers = headers.append("Accept", 'application/json');
 			headers = headers.append('Content-Type', 'application/json');
 
-			this.http.post(this.apiUrl+'/api/v1/api-register',JSON.stringify(registerData),{headers: headers}).subscribe(data => {
+			this.http.post(this.apiUrl+'/signup',JSON.stringify(registerData),{headers: headers}).subscribe(data => {
 				resolve(data);
 			}, err => {
 				console.log(err);
@@ -101,9 +101,40 @@ export class ApiProvider {
 	  });
 	}
 
-	forgot()
+	forgot(data)
 	{
-		
+		return new Promise((resolve,reject) => {
+			let headers = new HttpHeaders();
+			//headers =headers.append('Content-Type', 'application/x-www-form-urlencoded');
+			headers = headers.append("Accept", 'application/json');
+			headers = headers.append('Content-Type', 'application/json');
+
+			this.http.post(this.apiUrl+'/forget',JSON.stringify(data),{headers: headers}).subscribe(data => {
+				resolve(data);
+			}, err => {
+				console.log(err);
+				reject(err);
+			});
+
+	  });
+	}
+
+	reset(data)
+	{
+		return new Promise((resolve,reject) => {
+			let headers = new HttpHeaders();
+			//headers =headers.append('Content-Type', 'application/x-www-form-urlencoded');
+			headers = headers.append("Accept", 'application/json');
+			headers = headers.append('Content-Type', 'application/json');
+
+			this.http.post(this.apiUrl+'/reset',JSON.stringify(data),{headers: headers}).subscribe(data => {
+				resolve(data);
+			}, err => {
+				console.log(err);
+				reject(err);
+			});
+
+	  });
 	}
 
 	feedback()
