@@ -30,14 +30,14 @@ export class ResetpasswordotpPage {
     
     this.data = {};
 
-    this.Code = navParams.get('otpcode');
-    console.log(this.Code);
+    this.data.Code = navParams.get('Code');
+    console.log(this.data.Code);
 
-    this.Email = navParams.get('Emailid');
-    console.log(this.Email);
+    this.data.Email = navParams.get('Email');
+    console.log(this.data.Email);
 
     this.data.Pass = '';
-    this.confirmpassword = '';
+    this.data.confirmpassword = '';
 
     this.responseData = {};
 
@@ -60,12 +60,17 @@ export class ResetpasswordotpPage {
 
             //var data = 'username=' + this.data.username + '&password=' + this.data.password;
             //var data = JSON.stringify({username: this.data.username, password: this.data.password});
-            var data = {Pass: this.data.Pass, Email: this.Email, Code: this.Code};
-            console.log(data);
-            /*var password = this.data.Pass;
-            var confirmpassword = this.confirmpassword;
+            var data = {Pass: this.data.Pass, Email: this.data.Email, Code: this.data.Code};
+            /*var data = {Pass: this.data.Pass}
+            var Email = this.Email;
+            console.log(Email);
+            var Code = this.Code;
+            console.log(Code);
+            console.log(data);*/
+            var password = this.data.Pass;
+            var cpassword = this.data.confirmpassword;
              
-             if (password == confirmpassword) {*/
+             if (password == cpassword) {
 
               this.apiProvider.reset(this.data).then((result) =>
               {
@@ -78,8 +83,8 @@ export class ResetpasswordotpPage {
                     if(this.error!= null)
                     {
                       let toast = this.toastCtrl.create({
-                      message: 'Server error!!',
-                      duration: 2000,
+                      message: 'Code not matched !!',
+                      duration: 3000,
                       position: 'top'
                         });
 
@@ -92,9 +97,10 @@ export class ResetpasswordotpPage {
                     //this.error = JSON.parse(error['_body']).error;
                     console.log(this.error);
               });
-            /*}else{
-              this.error = "Password and Confirm password not match";
-            }*/
+            }else{
+              this.loading.dismiss();
+              this.error = "Password and Confirm password should match";
+            }
     }
   }
 
@@ -120,5 +126,17 @@ export class ResetpasswordotpPage {
 	      	}
   		}
   	}
+
+   /* ptype="password";
+
+  toggleShow(){
+      var state =  this.ptype
+      if(state == "password"){
+          this.ptype='text';
+      }
+      else{
+          this.ptype = "password";
+      }
+  }*/
 
 }

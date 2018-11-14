@@ -12,10 +12,19 @@
 		</div>
 		<div style="margin-top: 50px;">
 			<ion-item class="app-input">
-				<ion-input type="text" placeholder="Device name" name="devicename">{{ scannedCode }}</ion-input>
+				<ion-input type="text" placeholder="Device id" name="deviceid" [(ngModel)]="data.deviceid"></ion-input>
 			</ion-item>
 			<ion-item class="app-input">
-				<ion-input type="text" placeholder="Device location" name="devicelocation"></ion-input>
+				<ion-input type="text" placeholder="Device name" name="devicename" [(ngModel)]="data.name"></ion-input>
+			</ion-item>
+			<ion-item class="app-input">
+				<ion-input type="text" placeholder="Device friendly name" name="devicefriendlyname" [(ngModel)]="data.friendlyname"></ion-input>
+			</ion-item>
+			<ion-item class="app-input">
+				<ion-input type="text" placeholder="Device location/room" name="deviceroom" [(ngModel)]="data.room"></ion-input>
+			</ion-item>
+			<ion-item class="app-input">
+				<ion-input style="text-transform: uppercase;" type="text" placeholder="Device type(fan/switch/light)" name="devicetype" [(ngModel)]="data.type"></ion-input>
 			</ion-item>
 			<p class="error-msg"></p>
 			<button ion-button block class="primary-btn" type="submit" (click)="proccedforwifi()">Proceed</button>

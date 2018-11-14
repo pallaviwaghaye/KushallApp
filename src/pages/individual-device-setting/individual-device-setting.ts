@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import { FirmwareupdatePage } from '../../pages/firmwareupdate/firmwareupdate';
 
 import { DomSanitizer } from '@angular/platform-browser';
+import { HomePage } from '../../pages/home/home';
 
 /**
  * Generated class for the IndividualDeviceSettingPage page.
@@ -194,7 +195,11 @@ export class IndividualDeviceSettingPage {
 	    message: 'Are you sure to delete this device?',
 	    buttons: [
 	      {
-	      	text: 'Delete'
+	      	text: 'Delete',
+          handler: () => {
+                      // localStorage.setItem("userId", userloginId);
+                      this.navCtrl.setRoot(HomePage);
+                    }
 	      },
 	      {
 	      	text: 'Cancel',

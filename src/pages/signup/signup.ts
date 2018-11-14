@@ -22,7 +22,7 @@ export class SignupPage {
   public error: any = "";
   public loading: any;
   public emailerror:any;
-  //public mobileerror:any;
+  public mobileerror:any;
   public responseData:any;
 
   /*"Email":"pallavi.waghaye@webakruti.in",
@@ -32,7 +32,7 @@ export class SignupPage {
       this.data = {};
       this.data.Email = '';
       this.data.Pass = '';
-      /*this.data.mobile = '';*/
+      this.data.mobile = '';
       this.responseData = {};    
 
   }
@@ -132,7 +132,7 @@ export class SignupPage {
 
         this.error = "";
           if((this.data.Email && this.data.Pass ) == ""){
-            this.error = "Please Enter Email, password ";
+            this.error = "Please enter email and password ";
         }else{
 
             this.loading = this.loadingCtrl.create({
@@ -145,62 +145,71 @@ export class SignupPage {
            // var data = JSON.stringify({email: this.data.email, password: this.data.password,mobile: this.data.mobile});
             var data = {email: this.data.Email, password: this.data.Pass};
             var email = this.data.Email;
+            var mobilenumber = this.data.mobile;
             var emailerror ="";
+            var mobileerror ="";
+            var validmobile = /^[0-9]{10,10}$/;
             var validemail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           if (!validemail.test(email)) {
-
-            this.error = "Enter correct email"; 
+            this.emailerror = "Enter correct email";  
             this.loading.dismiss();
           }else{
-            this.error = ""; 
+            this.emailerror = ""; 
+              if (!validmobile.test(mobilenumber)) {
+              this.mobileerror = "Enter correct mobile";
+              this.loading.dismiss();
+              }else{
+                this.mobileerror = "";
+                this.error = "";
+                this.apiProvider.registration(this.data).then((result) =>
+                  {
+                        this.responseData = result;
+                        console.log(this.responseData);
+                        this.loading.dismiss();
 
-            this.apiProvider.registration(this.data).then((result) =>
-              {
-                    this.responseData = result;
-                    console.log(this.responseData);
-                    this.loading.dismiss();
+                        this.navCtrl.setRoot(LoginPage);
 
-                    this.navCtrl.setRoot(LoginPage);
+                        
+                /*this.http.post(link, data, options)
+                    .map(res => res.json())
+                    .subscribe(rdata => {
+                        this.loading.dismiss();
+                        console.log(rdata);
+                        this.navCtrl.setRoot(LoginPage);*/
 
-                    
-            /*this.http.post(link, data, options)
-                .map(res => res.json())
-                .subscribe(rdata => {
-                    this.loading.dismiss();
-                    console.log(rdata);
-                    this.navCtrl.setRoot(LoginPage);*/
-
-            }, error => {
-                    this.loading.dismiss();
-                    if(this.error != null)
-                    {
-                      let alert = this.alertCtrl.create({
-                      title: 'SORRY',
-                      subTitle: 'Email Already Registered !! Please Login.',
-                      buttons: [
-                      {
-                          text: 'Ok',
-                          handler: () => {
-                              let loader = this.loadingCtrl.create({
-                                content: "Please wait...",
-                                duration: 2000,
-                              });
-                              loader.present();
-                              setTimeout(() => {
-                                      this.navCtrl.setRoot(LoginPage);
-                                  }, 2000);
-                              //this.navCtrl.push(LoginPage);
+                }, error => {
+                        this.loading.dismiss();
+                        if(this.error != null)
+                        {
+                          let alert = this.alertCtrl.create({
+                          title: 'SORRY',
+                          subTitle: 'Email Already Registered !! Please Login.',
+                          cssClass: 'alertCustomCss',
+                          buttons: [
+                          {
+                              text: 'Ok',
+                              handler: () => {
+                                  let loader = this.loadingCtrl.create({
+                                    content: "Please wait...",
+                                    duration: 2000,
+                                  });
+                                  loader.present();
+                                  setTimeout(() => {
+                                          this.navCtrl.setRoot(LoginPage);
+                                      }, 2000);
+                                  //this.navCtrl.push(LoginPage);
+                              }
                           }
+                          ]
+                        });
+                        alert.present();
                       }
-                      ]
-                    });
-                    alert.present();
-                  }
-                    //this.error = JSON.parse(error['_body']).error;
-                    console.log(this.error);
-            });
-  }
-}
+                        //this.error = JSON.parse(error['_body']).error;
+                        console.log(this.error);
+                });
+              }
+            }
+      }
 }
 
   /*login(){

@@ -18,10 +18,10 @@ import { ApiProvider } from '../../providers/api/api';
 export class PasswordotpPage {
 
   public data:any;
-  public email:any;
+  public Email:any;
 
   public error:any = "";
-  data: any;
+  //data: any;
   loading:any;
   responseData : any;
 
@@ -29,12 +29,12 @@ export class PasswordotpPage {
   constructor(public apiProvider: ApiProvider, public toastCtrl : ToastController,public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams) {
     this.data = {};
-    /*this.data.otpcode = '';
-    this.email = navParams.get('Email');
-    console.log(this.email);*/
+    
+    this.data.Code = '';
+    this.data.Email = navParams.get('Email');
+    console.log(this.data.Email);
 
-    this.data = {};
-
+    /*
     this.data.Code = '';
     //console.log(this.Code);
 
@@ -44,23 +44,31 @@ export class PasswordotpPage {
     this.data.Pass = '';
     //this.confirmpassword = '';
 
-    this.responseData = {};
+    this.responseData = {};*/
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PasswordotpPage');
   }
 
-  /*resetpwd(){
+  resetpwd(){
+    this.error = "";
     //send key and value of otp
-    this.navCtrl.push(ResetpasswordotpPage, {otpcode: this.data.otpcode, Emailid: this.email});
-  }*/
+    if(this.data.Code.length == 6)
+    {
+    this.navCtrl.push(ResetpasswordotpPage, {Code: this.data.Code, Email: this.data.Email});
+    }
+    else
+    {
+      this.error = "Enter correct otp";
+    }
+  }
 
-  resetpwd()
+  /*resetpwd()
   {
     this.error = "";
-        if((this.data.Email && this.data.Pass && this.data.Code) == ""){
-            this.error = "Please enter email,password and otp";
+        if((this.data.Pass && this.data.Code) == ""){
+            this.error = "Please enter otp and new password  ";
         }else{
             this.loading = this.loadingCtrl.create({
                 content: "Please wait..."
@@ -69,12 +77,9 @@ export class PasswordotpPage {
 
             //var data = 'username=' + this.data.username + '&password=' + this.data.password;
             //var data = JSON.stringify({username: this.data.username, password: this.data.password});
-            var data = {Email: this.data.Email, Pass: this.data.Pass, Code: this.data.Code};
+            var data = {Pass: this.data.Pass, Code: this.data.Code, Email: this.data.Email };
             console.log(data);
-            /*var password = this.data.Pass;
-            var confirmpassword = this.confirmpassword;
-             
-             if (password == confirmpassword) {*/
+           
 
               this.apiProvider.reset(this.data).then((result) =>
               {
@@ -101,9 +106,7 @@ export class PasswordotpPage {
                     //this.error = JSON.parse(error['_body']).error;
                     console.log(this.error);
               });
-            /*}else{
-              this.error = "Password and Confirm password not match";
-            }*/
+          
     }
   }
 
@@ -117,6 +120,6 @@ type="password";
       else{
           this.type = "password";
       }
-  }
+  }*/
 
 }

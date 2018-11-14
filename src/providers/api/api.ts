@@ -8,11 +8,11 @@ export class ApiProvider {
 	
   constructor(public http: HttpClient) {
 
-  	//this.access_token = localStorage.getItem('access_token');
-  	//console.log(this.access_token);
+  	/*this.access_token = localStorage.getItem('access_token');
+  	console.log(this.access_token);*/
     console.log('Hello ApiProvider Provider');
   }
-	getUsers() {
+	/*getUsers() {
 	  return new Promise(resolve => {
 
 
@@ -33,7 +33,7 @@ export class ApiProvider {
 			});
 
 	  });
-	}
+	}*/
 
 	loginUser(data) {
 		//here data is object need to provided while calling this from home.ts
@@ -77,7 +77,7 @@ export class ApiProvider {
 
 
 
-	getDevices()
+	/*getDevices()
 	{
 		return new Promise(resolve => {
 
@@ -99,7 +99,7 @@ export class ApiProvider {
 			});
 
 	  });
-	}
+	}*/
 
 	forgot(data)
 	{
@@ -137,6 +137,130 @@ export class ApiProvider {
 	  });
 	}
 
+	addDevice(data)
+	{
+		return new Promise((resolve,reject) => {
+			let headers = new HttpHeaders();
+			headers = headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+			console.log(localStorage.getItem('access_token'));
+			//headers =headers.append('Content-Type', 'application/x-www-form-urlencoded');
+			headers = headers.append("Accept", 'application/json');
+			headers = headers.append('Content-Type', 'application/json');
+
+			this.http.post(this.apiUrl+'/adddevice',JSON.stringify(data),{headers: headers}).subscribe(data => {
+				resolve(data);
+			}, err => {
+				console.log(err);
+				reject(err);
+			});
+
+	  });
+	}
+
+	/*checkDeviceExist(data)
+	{
+		return new Promise((resolve,reject) => {
+			let headers = new HttpHeaders();
+			headers = headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+			console.log(localStorage.getItem('access_token'));
+			//headers =headers.append('Content-Type', 'application/x-www-form-urlencoded');
+			headers = headers.append("Accept", 'application/json');
+			headers = headers.append('Content-Type', 'application/json');
+
+			this.http.post(this.apiUrl+'/checkdeviceexist',JSON.stringify(data),{headers: headers}).subscribe(data => {
+				resolve(data);
+			}, err => {
+				console.log(err);
+				reject(err);
+			});
+
+	  });
+	}
+
+	getDeviceStatus(data)
+	{
+		return new Promise((resolve,reject) => {
+			let headers = new HttpHeaders();
+			headers = headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+			console.log();
+			//headers =headers.append('Content-Type', 'application/x-www-form-urlencoded');
+			headers = headers.append("Accept", 'application/json');
+			headers = headers.append('Content-Type', 'application/json');
+
+			this.http.post(this.apiUrl+'/getdevicestatus',JSON.stringify(data),{headers: headers}).subscribe(data => {
+				resolve(data);
+			}, err => {
+				console.log(err);
+				reject(err);
+			});
+
+	  });
+	}
+
+	updateDevice(data)
+	{
+		return new Promise((resolve,reject) => {
+			let headers = new HttpHeaders();
+			headers = headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+			console.log();
+			//headers =headers.append('Content-Type', 'application/x-www-form-urlencoded');
+			headers = headers.append("Accept", 'application/json');
+			headers = headers.append('Content-Type', 'application/json');
+
+			this.http.post(this.apiUrl+'/updatedevice',JSON.stringify(data),{headers: headers}).subscribe(data => {
+				resolve(data);
+			}, err => {
+				console.log(err);
+				reject(err);
+			});
+
+	  });
+	}
+
+	deleteDevice(data)
+	{
+		return new Promise((resolve,reject) => {
+			let headers = new HttpHeaders();
+			headers = headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+			console.log();
+			//headers =headers.append('Content-Type', 'application/x-www-form-urlencoded');
+			headers = headers.append("Accept", 'application/json');
+			headers = headers.append('Content-Type', 'application/json');
+
+			this.http.post(this.apiUrl+'/deletedevice',JSON.stringify(data),{headers: headers}).subscribe(data => {
+				resolve(data);
+			}, err => {
+				console.log(err);
+				reject(err);
+			});
+
+	  });
+	}
+*/
+
+	getDevices(data)
+	{
+		return new Promise((resolve,reject) => {
+			let headers = new HttpHeaders();
+			headers = headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+			console.log();
+			//headers =headers.append('Content-Type', 'application/x-www-form-urlencoded');
+			headers = headers.append("Accept", 'application/json');
+			headers = headers.append('Content-Type', 'application/json');
+
+			this.http.post(this.apiUrl+'/getdevices',JSON.stringify(data),{headers: headers})
+			.subscribe(data => {
+				// var obj = JSON.parse(data['_body']);
+				// console.log(obj);
+				resolve(data);
+			}, err => {
+				console.log(err);
+				reject(err);
+			});
+
+	  });
+	}
+	
 	feedback()
 	{
 		

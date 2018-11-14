@@ -55,14 +55,41 @@ export class ForgotpasswordPage {
             //var data = 'username=' + this.data.username + '&password=' + this.data.password;
             //var data = JSON.stringify({username: this.data.username, password: this.data.password});
             var data = {username: this.data.Email};
-             console.log(data);
+            console.log(data);
+
+            var email = this.data.Email;
+            var emailerror ="";
+            var validemail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (!validemail.test(email)) {
+
+              this.error = "Enter correct email"; 
+              this.loading.dismiss();
+            }else{
+              this.error = ""; 
+
               this.apiProvider.forgot(this.data).then((result) =>
               {
                     this.responseData = result;
                     console.log(this.responseData);
                     this.loading.dismiss();
                     //this.navCtrl.setRoot(HomePage);
-                    this.navCtrl.push(PasswordotpPage, {Email: this.data.Email});
+                    if(this.responseData != null)
+                    {
+                      this.navCtrl.push(PasswordotpPage, {Email: this.data.Email});
+                      
+                      let toast = this.toastCtrl.create({
+                      message: 'OTP sent to your mail successfully.',
+                      duration: 5000,
+                      position: 'bottom'
+                        });
+
+                       toast.onDidDismiss(() => {
+                          console.log('Dismissed toast');
+                        });
+
+                      toast.present();
+                    
+                    }
               },error =>{
                     this.loading.dismiss();
                     if(this.error!= null)
@@ -82,7 +109,7 @@ export class ForgotpasswordPage {
                     //this.error = JSON.parse(error['_body']).error;
                     console.log(this.error);
               });
-
+            }
            /* this.http.post(link, data, { headers: headers })
                 //.map(res => res.json())
                 .subscribe(rdata => {

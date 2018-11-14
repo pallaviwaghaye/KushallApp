@@ -50,8 +50,8 @@
 			<img src="assets/imgs/device-img-2.png">
 		</ion-item>
 		<p class="product-name primary-text"><span>LED Bulb</span></p>
-	</div>
- -->
+	</div> -->
+
 	 <!-- <ion-list *ngFor="let device of data">
 		<ion-item *ngIf="device != null; else elseBlock" class="no-padding">
 			<div class="product-div text-center" (click)="twoswitch()">
@@ -86,11 +86,13 @@
 		</ng-template>
     </ion-list>
  -->
+ 
+ <!-- correct code -->
     <div class="product-div text-center" *ngFor="let item of items" (click)="colorpickerslide()">
 		<ion-item class="product-list-div product-added">
 			<img src="assets/imgs/device-img-2.png">
 		</ion-item>
-		<p class="product-name primary-text"><span>{{item.endpointId}}</span></p>
+		<p class="product-name primary-text"><span>{{item.name}}</span></p>
 	</div>
 
  	<!-- <ion-card class="cardconteudo" *ngFor="let item of items">

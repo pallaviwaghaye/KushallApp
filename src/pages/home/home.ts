@@ -11,6 +11,7 @@ import { ColorpickersliderPage } from '../../pages/colorpickerslider/colorpicker
 import { LedtabPage } from '../../pages/ledtab/ledtab';
 import { SettingsPage } from '../../pages/settings/settings';
 
+import { DevicesetupPage } from '../../pages/devicesetup/devicesetup';
 import { AppModule } from '../../app/app.module';
 
 import { ApiProvider } from '../../providers/api/api';
@@ -27,27 +28,43 @@ export class HomePage {
   public device:any;
   responseData : any;
   public items: any;
+
+  data: any;
+  public userid:any;
   //var self = this;
+
+  public newSubcategories: any[] = []; // DECLARE A NEW EMPTY ARRAY IN THE TOP OF YOUR CLASS
+  public myList: any;
 
   constructor(public navParams: NavParams,public apiProvider: ApiProvider,public loadingCtrl: LoadingController,public navCtrl: NavController) 
   {
+    this.data = {};
     this.responseData = {};
     this.access_token = localStorage.getItem('access_token');
+    console.log(this.access_token);
+   // this.data.userid = 'pallavi.waghaye@webakruti.in';
+    //this.data.userid = navParams.get('Email');
+    this.data.userid = localStorage.getItem('Email');
+    console.log('emailid===',this.data.userid);
+
+
+
     //this.device = navParams.get('deviceData');
     //console.log(this.access_token);
-    this.Users();
-    this.devices();
+    //this.Users();
+    //this.sendDevice();
+    this.getdevices();
     //this.getUser();
   }
 
-  Users()
+ /* Users()
 {
   
   this.apiProvider.getUsers()
   .then(data => {
     console.log(data);
   });
-}
+}*/
 
  /* Devices()
 {
@@ -102,20 +119,57 @@ export class HomePage {
     this.navCtrl.push(SettingsPage);
   }
 
-  devices()
+  getdevices()
   {
+     
+     var data = {userid: this.data.userid};
+     console.log(data);
+
+     this.apiProvider.getDevices(this.data).then((result) =>
+              {
+                    this.myList = result;                    
+                     var viewlistarray = [];
+                     var j = 0;
+                     for(var i = 0; i < this.myList.devices.length; i++)
+                     {
+                      if(this.myList.Email != null)
+                      {
+                        viewlistarray[j] = JSON.parse(this.myList.devices[i]);
+                        j++; 
+                      }
+                     }
+                  if(viewlistarray.length != 0)
+                  {
+                    this.items = viewlistarray;  
+                    console.log(this.items);    
+                  }
+                   // console.log(this.items);
+                    //this.loadingCtrl.dismiss();
+                    //this.navCtrl.setRoot(HomePage);
+
+     }, error => {
+            console.log("Response not Fetched Correctly!");
+        });
+     /*,error =>{
+                    this.loadingCtrl.dismiss();
+
     this.apiProvider.getDevices().then(data => {
       console.log(data);
         this.items = data;
       });
-  }
+  });*/
+
+    /* this.items.forEach(item => {
+        this.newSubcategories.push(a);
+    });*/
+}
 
 
 
 
   selectproduct(){
 
-    this.loading = this.loadingCtrl.create({
+    /*this.loading = this.loadingCtrl.create({
                 content: "Please wait..."
             });
     this.loading.present();
@@ -129,10 +183,10 @@ export class HomePage {
       if(data != null)
       {
         //self.events.publish('deviceCategory', data);
-        this.loading.dismiss();
+        this.loading.dismiss();*/
         
         this.navCtrl.push(ScannerPage);
-      }
+      /*}
       else{
         alert('No Devices Found !!');
       }
@@ -140,7 +194,7 @@ export class HomePage {
                     this.loading.dismiss();
                     //this.error = JSON.parse(error['_body']).error;
                     console.log(this.error);
-              });
+              });*/
 }
   	
 

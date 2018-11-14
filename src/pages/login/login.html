@@ -7,7 +7,7 @@
 				<ion-input type="username" placeholder="Email address" name="username" [(ngModel)]="data.Email"></ion-input>
 			</ion-item>
 			<ion-item class="app-input">
-				<ion-input type="{{type}}" placeholder="Password" name="password" [(ngModel)]="data.Pass"></ion-input>
+				<ion-input type="{{type}}" placeholder="Password" name="password" [(ngModel)]="data.Pass" ></ion-input>
 				<ion-icon (click)="toggleShow()" item-right name="ios-eye-outline"></ion-icon>
 			</ion-item>
 			<p class="error-msg">{{error}}</p>
