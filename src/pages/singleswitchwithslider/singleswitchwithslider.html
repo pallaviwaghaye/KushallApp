@@ -1,6 +1,6 @@
 <ion-header>
 	<ion-navbar>
-		<ion-title>Single Switch 
+		<ion-title>{{deviceName}} 
 			<span class="cust-gear headersetting-icon" (click)="individualSettings()" item-end></span>
 		</ion-title>
 	</ion-navbar>
@@ -12,7 +12,7 @@
 		<ion-item class="product-list-div product-added">
 			<img src="assets/imgs/device-img-1.png">
 		</ion-item>
-		<p class="product-name primary-text">Single Switch</p>
+		<p class="product-name primary-text">{{deviceName}}</p>
 	</div>
 	<button [class.active]="switchstatus" ion-button class="float-right switch" (click)="toggleswitch(switchstatusText)">{{switchstatusText}}</button>
 	<div style="clear: both;"></div>
@@ -39,12 +39,17 @@
 		</div>
 		<ion-item class="no-padding first shadule-timepicker">
 	        <ion-label>Start Time</ion-label>
-	        <ion-datetime displayFormat="hh:mm A" placeholder="Start Time" name="starttime"></ion-datetime>
+	        <ion-datetime displayFormat="HH:mm A" placeholder="Start Time" name="starttime" [(ngModel)]="data.time"></ion-datetime>
 	    </ion-item>
 	    <ion-item class="no-padding shadule-timepicker">
 	        <ion-label>End Time</ion-label>
-	        <ion-datetime displayFormat="hh:mm A" placeholder="End Time" name="endttime"></ion-datetime>
+	        <ion-datetime displayFormat="HH:mm A" placeholder="End Time" name="endttime" [(ngModel)]="data.endtime"></ion-datetime>
 	    </ion-item>
-	    <button ion-button block class="primary-btn" type="submit">Save Schedule</button>
+
+	    <button style="margin-top: 50px;" ion-button block class="primary-btn" type="submit" (click)="saveschedule()">Save Schedule</button>
+	    
 	</div>
+	
+	
+	
 </ion-content>

@@ -28,6 +28,8 @@ export class HomePage {
   public device:any;
   responseData : any;
   public items: any;
+  public item: any;
+  public ind: any;
 
   data: any;
   public userid:any;
@@ -35,6 +37,8 @@ export class HomePage {
 
   public newSubcategories: any[] = []; // DECLARE A NEW EMPTY ARRAY IN THE TOP OF YOUR CLASS
   public myList: any;
+
+  public days :any;
 
   constructor(public navParams: NavParams,public apiProvider: ApiProvider,public loadingCtrl: LoadingController,public navCtrl: NavController) 
   {
@@ -49,13 +53,61 @@ export class HomePage {
 
 
 
-    //this.device = navParams.get('deviceData');
-    //console.log(this.access_token);
+    this.device = localStorage.getItem('addDevicedata');
+    console.log(this.device);
     //this.Users();
     //this.sendDevice();
     this.getdevices();
+   /* this.schedule();
+    this.execSchedule();*/
     //this.getUser();
   }
+
+/*schedule()
+{
+
+    this.days = {mon:false,tue:true,wed:true,thu:false,fri:false,sat:false,sun:false};
+      console.log(this.days);
+    var sdata = {time:"17:37",event:"on",days:this.days,deviceid:"128223",ScheduleID:"0",userid:"naiknavare.pranav@gmail.com"};
+     console.log(sdata);
+    
+   // localStorage.setItem('addDevicedata', this.data);
+    
+    this.apiProvider.AddorUpdateSchedule(this.sdata).then((result) =>
+              {
+                this.responseData = result;
+                console.log('schedule data =',this.responseData);
+                
+                //this.navCtrl.push(WifisetupPage);
+
+              },error => {
+            console.log("Response not Fetched Correctly!");
+        });
+}
+
+
+execSchedule()
+{
+
+    this.data.device = {deviceid: this.data.deviceid};
+      console.log(this.data.device);
+      console.log(this.days);
+    var data = {device:this.data.device,action:"TurnOff / TurnOn",level:60,userid:this.data.userid};
+     console.log(data);
+    
+   // localStorage.setItem('addDevicedata', this.data);
+    
+    this.apiProvider.execdevice(this.data).then((result) =>
+              {
+                this.responseData = result;
+                console.log('schedule data =',this.responseData);
+                
+                //this.navCtrl.push(WifisetupPage);
+
+              },error => {
+            console.log("Response not Fetched Correctly!");
+        });
+}*/
 
  /* Users()
 {
@@ -65,35 +117,6 @@ export class HomePage {
     console.log(data);
   });
 }*/
-
- /* Devices()
-{
- 
-  this.apiProvider.getDevices()
-  .then(data => {
-    console.log(data);
-  });
-    var devicelistarray = [];
-    var j = 0;
-    for (var i = 0; i < data; i++) {
-              if (data[i].status != 20) {
-                devicelistarray[j] = data[i];
-                j++;
-              }
-            }
-            if (devicelistarray.length == 0) {    
-              this.deviceArray = 'No device added';
-            }else{
-              this.allDevices = devicelistarray;
-            }    
-
-    },error =>{
-                    this.loading.dismiss();
-                    //this.error = JSON.parse(error['_body']).error;
-                    console.log(this.error);
-              });
-}
-*/
 
   /*getUser()
   {
@@ -119,6 +142,7 @@ export class HomePage {
     this.navCtrl.push(SettingsPage);
   }
 
+
   getdevices()
   {
      
@@ -127,7 +151,9 @@ export class HomePage {
 
      this.apiProvider.getDevices(this.data).then((result) =>
               {
-                    this.myList = result;                    
+                    this.myList = result;        
+                    localStorage.setItem('getDevice', JSON.stringify(this.myList));
+
                      var viewlistarray = [];
                      var j = 0;
                      for(var i = 0; i < this.myList.devices.length; i++)
@@ -140,8 +166,10 @@ export class HomePage {
                      }
                   if(viewlistarray.length != 0)
                   {
-                    this.items = viewlistarray;  
-                    console.log(this.items);    
+                    this.items = viewlistarray; 
+                    console.log('devices data = ' , this.items); 
+                    localStorage.setItem('getDevicedata', JSON.stringify(this.items));   
+
                   }
                    // console.log(this.items);
                     //this.loadingCtrl.dismiss();
@@ -150,55 +178,46 @@ export class HomePage {
      }, error => {
             console.log("Response not Fetched Correctly!");
         });
-     /*,error =>{
-                    this.loadingCtrl.dismiss();
 
-    this.apiProvider.getDevices().then(data => {
+   /* this.apiProvider.getDevices().then(data => {
       console.log(data);
         this.items = data;
       });
   });*/
 
-    /* this.items.forEach(item => {
-        this.newSubcategories.push(a);
-    });*/
 }
 
 
+
+/*deleteItem(item)
+  {
+    let index = this.items.indexOf(item);
+    console.log(index);
+    //console.log(this.device);
+    //console.log(item.deviceid);
+    let device = this.items.find(indexOf(item));
+    console.log(device);
+    console.log(this.items[0]);
+  for(index=index+1;index<this.items.length;index++)
+  {
+    //if(this.items.deviceid == item.deviceid)
+    //{
+    if(index > -1)
+    {
+      this.items.splice(index, 1);
+    }
+  }
+ // }
+  
+  }*/
 
 
   selectproduct(){
-
-    /*this.loading = this.loadingCtrl.create({
-                content: "Please wait..."
-            });
-    this.loading.present();
-
-    this.apiProvider.getDevices().then(data => {
-      this.responseData = data;
-      console.log(this.responseData);
-
-      //localStorage.setItem('Devicedata', this.responseData);
-      
-      if(data != null)
-      {
-        //self.events.publish('deviceCategory', data);
-        this.loading.dismiss();*/
-        
         this.navCtrl.push(ScannerPage);
-      /*}
-      else{
-        alert('No Devices Found !!');
-      }
-    },error =>{
-                    this.loading.dismiss();
-                    //this.error = JSON.parse(error['_body']).error;
-                    console.log(this.error);
-              });*/
 }
   	
 
-  singleswitch(){
+  /*singleswitch(){
   	this.navCtrl.push(SingleswitchPage);
   }
 
@@ -208,24 +227,31 @@ export class HomePage {
 
   fourswitchonlyshedular(){
     this.navCtrl.push(FourswitchonlyschedularPage);
-  }
+  }*/
 
-  singleswitchwithslider(){
-    this.navCtrl.push(SingleswitchwithsliderPage);
+  singleswitchwithslider(item, ind){
+    console.log(item);
+    console.log(ind);
+    this.navCtrl.push(SingleswitchwithsliderPage,{deviceData:item,index:ind});
   }
-  fourswitchonesliderandshedular(){
+  /*fourswitchonesliderandshedular(){
     this.navCtrl.push(FourswitchonesliderandschedularPage);
+  }*/
+  eightswitch(item, ind){
+    console.log(item);
+    console.log(ind);
+    this.navCtrl.push(EightswitchPage,{deviceData:item,index:ind});
   }
-  eightswaitch(){
-    this.navCtrl.push(EightswitchPage);
-  }
-  colorpickerslide(){
+  ledtabs(item, ind){
+    console.log(item);
+    console.log(ind);
+
     // let loading = this.loadingCtrl.create({
     //   spinner: 'hide',
     //   content: '<img src="../assets/imgs/preloader.gif"> Searching for networks'
     // });
     // loading.present();
-    this.navCtrl.push(LedtabPage);
+    this.navCtrl.push(LedtabPage,{deviceData:item,index:ind});
   }
 
 

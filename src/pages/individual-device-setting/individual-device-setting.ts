@@ -4,6 +4,9 @@ import { FirmwareupdatePage } from '../../pages/firmwareupdate/firmwareupdate';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { HomePage } from '../../pages/home/home';
+import { UpdateDevicePage } from '../../pages/update-device/update-device';
+
+import { ApiProvider } from '../../providers/api/api';
 
 /**
  * Generated class for the IndividualDeviceSettingPage page.
@@ -20,6 +23,14 @@ import { HomePage } from '../../pages/home/home';
 export class IndividualDeviceSettingPage {
 
 	private data: any;
+  public DeviceData:any;
+  public device: any;
+  public indexArray : any;
+  public response : any;
+  public item: any;
+
+  public deviceIndex: any;
+
   //private _htmlProperty: string = '<progress></progress>';
 
 /*
@@ -29,9 +40,27 @@ export class IndividualDeviceSettingPage {
     </div>
   </div>
 */
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
+  constructor(public apiProvider: ApiProvider,public navCtrl: NavController, public navParams: NavParams, 
   	private alertCtrl: AlertController, public loadingCtrl: LoadingController,
     private _sanitizer: DomSanitizer) {
+
+    this.data = {};
+    this.data.device = navParams.get("device");
+    console.log(this.data.device);
+
+    this.deviceIndex = navParams.get("index");
+    console.log(this.deviceIndex);
+   /* this.DeviceData = localStorage.getItem('getDevicedata');
+    console.log(JSON.parse(this.DeviceData));
+    
+    this.data.device = JSON.parse(this.DeviceData);
+    //this.device = localStorage.getItem('getDevice');
+    console.log(this.data.device);*/
+
+    this.data.userid = localStorage.getItem('Email');
+    console.log(this.data.userid);
+    /*this.device = localStorage.getItem('addDevicedata');
+    console.log(this.device);*/
   }
 
   ionViewDidLoad() {
@@ -187,7 +216,47 @@ export class IndividualDeviceSettingPage {
 	  alert.present();
   }
 
-  DeleteDevice()
+  UpdateDevice()
+  {
+
+    this.navCtrl.push(UpdateDevicePage,{device:this.data.device,index:this.deviceIndex});
+
+      /*let alert = this.alertCtrl.create({
+      title: 'Update Device',
+      cssClass:'alertCustomCss',
+      message: 'Are you sure to update this device?',
+      buttons: [
+        {
+          text: 'Update',
+          handler: () => {
+
+             this.navCtrl.push(UpdateDevicePage);
+
+             }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+    alert.present();*/
+            //this.data.device = {device: this.DeviceData};
+            //console.log(this.data.device);
+
+            /*var data = {device:this.data.device,userid: this.data.userid};
+            console.log(data);
+            this.apiProvider.updateDevice(this.data).then((result) =>
+              {
+                  
+                      this.response = result;
+                      this.navCtrl.setRoot(HomePage);
+                  
+              }); */    // localStorage.setItem("userId", userloginId);           
+          
+  }
+
+  DeleteDevice(item)
   {
   		let alert = this.alertCtrl.create({
 	    title: 'Delete Device',
@@ -197,9 +266,58 @@ export class IndividualDeviceSettingPage {
 	      {
 	      	text: 'Delete',
           handler: () => {
-                      // localStorage.setItem("userId", userloginId);
+
+            
+           // }
+            
+              /*for(var x = 0;x<this.items.length;x++)
+              {
+                if(this.items.deviceid == item.deviceid)
+                {
+
+                }
+              }*/
+
+            
+            //this.data.device = {device: this.DeviceData};
+            //console.log(this.data.device);
+
+            var data = {device:this.data.device,userid: this.data.userid};
+            console.log(data);
+            this.apiProvider.deleteDevice(this.data).then((result) =>
+              {
+
+                this.navCtrl.setRoot(HomePage);
+                  /*let index = this.data.device.indexOf(item);
+                  console.log(index);
+                  console.log(this.device);
+                  console.log(item.deviceid);
+
+                  console.log(this.data.device[0]);
+                  for(index=index+1;index<this.data.device.length;index++)
+                  {
+                    //if(this.items.deviceid == item.deviceid)
+                    //{
+                    if(index > -1)
+                    {
+                      this.data.device.splice(index, 1);
                       this.navCtrl.setRoot(HomePage);
                     }
+                  }
+                  */
+                  /*this.indexArray = JSON.parse(this.DeviceData);
+                  let index = result.indexOf(this.indexArray);
+
+                  for(var i=0 ; i< ;i++)
+                  {
+
+                  }
+                  if(index > -1){
+                      result.splice(index, 1);
+                      this.navCtrl.setRoot(HomePage);
+                  }*/
+              });     // localStorage.setItem("userId", userloginId);           
+          }
 	      },
 	      {
 	      	text: 'Cancel',

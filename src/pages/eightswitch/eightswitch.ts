@@ -14,7 +14,12 @@ import { IndividualDeviceSettingPage } from '../../pages/individual-device-setti
   templateUrl: 'eightswitch.html',
 })
 export class EightswitchPage {
- public brightness:any=0;
+
+  public deviceData: any;
+  public index: any;
+  public deviceName: any;
+
+  public brightness:any=0;
   public showschedule1:any;
   public showschedule2:any;
   public showschedule3:any;
@@ -68,6 +73,14 @@ export class EightswitchPage {
   public arr7:boolean=false;
   public arr8:boolean=false;
   	constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+      this.deviceData = navParams.get("deviceData");
+      console.log(this.deviceData);
+      this.index = navParams.get("index");
+      console.log(this.index); 
+
+      this.deviceName = this.deviceData.name;
+      
       this.showschedule1 = false;
   		this.showschedule2 = false;
       this.showschedule3 = false;
@@ -377,7 +390,7 @@ export class EightswitchPage {
 
      individualSettings()
     {
-      this.navCtrl.push(IndividualDeviceSettingPage);
+      this.navCtrl.push(IndividualDeviceSettingPage,{device:this.deviceData,index:this.index});
     }
 
 }

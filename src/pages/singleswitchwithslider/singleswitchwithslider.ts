@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { IndividualDeviceSettingPage } from '../../pages/individual-device-setting/individual-device-setting';
+
+import { ApiProvider } from '../../providers/api/api';
+import { HomePage } from '../../pages/home/home';
+
 /**
  * Generated class for the SingleswitchwithsliderPage page.
  *
@@ -15,7 +19,20 @@ import { IndividualDeviceSettingPage } from '../../pages/individual-device-setti
 })
 export class SingleswitchwithsliderPage {
 
- public showschedule:any;
+  public deviceData: any;
+  public index: any;
+  public deviceName: any;
+  public data:any;
+  public starttime:any;
+  public endtime:any;
+  public days:any;
+  responseData : any;
+
+  public userid:any;
+  responseData : any;
+  public event:any;
+
+  public showschedule:any;
 	public isBtnActive1:boolean=false;
 	public isBtnActive2:boolean=false;
 	public isBtnActive3:boolean=false;
@@ -26,22 +43,102 @@ export class SingleswitchwithsliderPage {
   public switchstatus:boolean=false;
   public switchstatusText:any;
   public brightness:any=0;
-  	constructor(public navCtrl: NavController, public navParams: NavParams) {
+  	constructor(public apiProvider: ApiProvider,public navCtrl: NavController, public navParams: NavParams) {
+
+      this.data = {};
+      this.responseData = {};
+
+      this.data.time = '';
+      this.data.endtime = '';
+
+      this.data.userid = localStorage.getItem('Email');
+      console.log('emailid===',this.data.userid);
+
+      this.lightDevice = JSON.parse(localStorage.getItem('lightDevicedata'));
+      console.log('lightdevice=',this.lightDevice);
+      /*this.index = navParams.get("index");
+      console.log(this.index);*/
+      this.data.deviceid = this.lightDevice.deviceid;
+      console.log(this.lightDevice.deviceid);
+      this.index = navParams.get("index");
+      console.log(this.index);
+
+      //this.deviceName = this.deviceData.name;
+      
   		this.showschedule = false;
-  		this.switchstatusText = 'OFF';
+  		this.switchstatusText = 'off';
+      this.data.event = 'off';
+
+
+      this.saveschedule();
+      this.execSchedule();
+
+
   	}
 
   	ionViewDidLoad() {
     	console.log('ionViewDidLoad SingleswitchPage');
   	}
 
+
+   saveschedule()
+{
+   
+   // this.toggleClass(num);
+    if(this.data.event == 'on')
+    {
+    this.data.days = {mon:this.isBtnActive2,tue:this.isBtnActive3,wed:this.isBtnActive4,thu:this.isBtnActive5,fri:this.isBtnActive6,sat:this.isBtnActive7,sun:this.isBtnActive1};
+      console.log(this.data.days);
+    var data = {time:this.data.time,event:this.data.event,days:this.data.days,deviceid:this.data.deviceid,userid:this.data.userid};
+     console.log(data);
+    
+   // localStorage.setItem('addDevicedata', this.data);
+    
+    this.apiProvider.AddorUpdateSchedule(this.data).then((result) =>
+              {
+                this.responseData = result;
+                console.log('schedule data =',this.responseData);
+                
+                this.navCtrl.push(HomePage);
+
+              },error => {
+            console.log("Response not Fetched Correctly!");
+        });
+   }
+    if(this.data.event == 'off')
+   {
+
+    this.data.days = {mon:this.isBtnActive2,tue:this.isBtnActive3,wed:this.isBtnActive4,thu:this.isBtnActive5,fri:this.isBtnActive6,sat:this.isBtnActive7,sun:this.isBtnActive1};
+      console.log(this.data.days);
+    var data = {time:this.data.endtime,event:this.data.event,days:this.data.days,deviceid:this.data.deviceid,userid:this.data.userid};
+     console.log(data);
+
+   this.apiProvider.AddorUpdateSchedule(this.data).then((result) =>
+              {
+                this.responseData = result;
+                console.log('schedule data =',this.responseData);
+                
+                this.navCtrl.push(HomePage);
+
+              },error => {
+            console.log("Response not Fetched Correctly!");
+        });
+   }
+  //this.execSchedule();
+}
+
+
+
   	changeshedule(){
-  		if (this.showschedule == false) {
-  			this.showschedule = true;
-  		}else{
-  			this.showschedule = false;
-  		}
-  	}
+      if (this.showschedule == false && this.data.event == 'off') {
+        this.showschedule = true;
+        this.data.event = 'on';
+      }else{
+        this.showschedule = false;
+        this.data.event = 'off';
+      }
+    }
+
   	toggleClass(num){
   		if(num == 1){
       		this.isBtnActive1 = !this.isBtnActive1;
@@ -65,12 +162,42 @@ export class SingleswitchwithsliderPage {
       		this.isBtnActive7 = !this.isBtnActive7;
   		}
   	}
+
+
+
+execSchedule()
+{
+if(this.switchstatus == true)
+{
+    //this.data.device = {deviceid: this.data.deviceid};
+      //console.log(this.data.device);
+      //console.log(this.days);
+
+      console.log('brightness=',this.brightness);
+    var data = {device:this.deviceData.deviceid,action:this.switchstatusText,level:this.brightness,userid:this.data.userid};
+     console.log(data);
+    
+   // localStorage.setItem('addDevicedata', this.data);
+    
+    this.apiProvider.execdevice(this.data).then((result) =>
+              {
+                this.responseData = result;
+                console.log('schedule data =',this.responseData);
+                
+                //this.navCtrl.push(WifisetupPage);
+
+              },error => {
+            console.log("Response not Fetched Correctly!");
+        });
+  }
+}
+
     toggleswitch(switchstatusText){
       this.switchstatus = !this.switchstatus;
-      if(switchstatusText == 'ON'){
-        this.switchstatusText = 'OFF';
+      if(switchstatusText == 'on'){
+        this.switchstatusText = 'off';
       }else{
-        this.switchstatusText = 'ON';
+        this.switchstatusText = 'on';
       }
     }
 
@@ -80,7 +207,7 @@ export class SingleswitchwithsliderPage {
 
      individualSettings()
     {
-      this.navCtrl.push(IndividualDeviceSettingPage);
+      this.navCtrl.push(IndividualDeviceSettingPage,{device:this.deviceData,index:this.index});
     }
 
 }

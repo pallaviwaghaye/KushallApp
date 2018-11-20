@@ -1,18 +1,14 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Setup<ion-icon class="headersetting-icon closepage" name="ios-close-outline" (click)="closepage()"></ion-icon></ion-title>
+    <ion-title>Update Device</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="bg-black">
 	<ion-list class="app-form">
-		<div style="padding: 20px 0 10px;">
-			<h2 class="page-head heading-title primary-text text-center">Customise your Kushall device</h2>
-			<p class="text-center otp-note">{{ scannedCode }} </p>
-		</div>
-		<div style="margin-top: 50px;">
+		<div>
 			<ion-item class="app-input">
-				<ion-input type="text" placeholder="Device id" name="deviceid" [(ngModel)]="data.deviceid"></ion-input>
+				<ion-input type="text" placeholder="Device id" name="deviceid" [(ngModel)]="data.deviceid" [readonly]="isReadonly()"></ion-input>
 			</ion-item>
 			<ion-item class="app-input">
 				<ion-input type="text" placeholder="Device name" name="devicename" [(ngModel)]="data.name"></ion-input>
@@ -27,7 +23,7 @@
 				<ion-input type="text" placeholder="Device type(SWITCH/LIGHT/FAN)" name="devicetype" [(ngModel)]="data.type" (ngModelChange)="data.type = $event.toLocaleUpperCase()"></ion-input>
 			</ion-item>
 			<p class="error-msg"></p>
-			<button ion-button block class="primary-btn" type="submit" (click)="proccedforwifi()">Proceed</button>
+			<button ion-button block class="primary-btn" type="submit" (click)="updateDevice()">Update</button>
 		</div>
 	</ion-list>
 </ion-content>

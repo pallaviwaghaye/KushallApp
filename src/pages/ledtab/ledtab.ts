@@ -22,12 +22,24 @@ import { IndividualDeviceSettingPage } from '../../pages/individual-device-setti
 })
 export class LedtabPage {
 
-  tab1Root = ColorpickersliderPage;
+    public deviceData: any;
+    public index: any;
+    
+    
+
+    tab1Root = ColorpickersliderPage;
   	tab2Root = WhiteyellowcolorpickerPage;
   	tab3Root = MoodsPage;
   	tab4Root = LoopsPage;
   	tab5Root = LedschedularPage;
   	constructor(public navCtrl: NavController, public navParams: NavParams) {
+      this.deviceData = navParams.get("deviceData");
+      localStorage.setItem('lightDevicedata', JSON.stringify(this.deviceData));
+      console.log(this.deviceData);
+      this.index = navParams.get("index");
+      console.log(this.index); 
+
+      //this.deviceName = this.deviceData.name;
   	}
 
   	ionViewDidLoad() {
@@ -36,7 +48,7 @@ export class LedtabPage {
 
      individualSettings()
     {
-      this.navCtrl.push(IndividualDeviceSettingPage);
+      this.navCtrl.push(IndividualDeviceSettingPage,{device:this.deviceData,index:this.index});
     }
 
   

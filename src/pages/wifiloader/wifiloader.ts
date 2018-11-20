@@ -18,9 +18,9 @@ export class WifiloaderPage {
     public DeviceData:any;
   	constructor(public navCtrl: NavController, public navParams: NavParams) {
   		this.loading();
-      this.DeviceData = localStorage.getItem('Devicedata');
+      this.DeviceData = localStorage.getItem('addDevicedata');
       console.log('wifiloader : ',this.DeviceData);
-      alert(this.DeviceData);
+      //alert(this.DeviceData);
   	}
 
   	ionViewDidLoad() {
@@ -29,8 +29,8 @@ export class WifiloaderPage {
 
   	loading(){
   		setTimeout(() => {
-  			this.navCtrl.setRoot(HomePage);
-        //this.navCtrl.setRoot(HomePage,{deviceData:this.DeviceData});
+  			//this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(HomePage,{deviceData:this.DeviceData});
   		}, 2000);
   	}
 

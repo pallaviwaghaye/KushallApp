@@ -15,7 +15,8 @@ import { DomController } from 'ionic-angular';
   encapsulation:ViewEncapsulation.Emulated
 })
 export class ColorpickersliderPage {
-public switchstatusText:any;
+    
+    public switchstatusText:any;
   	public switchstatus:boolean=false;
     public brightnesswy:any=0;
     public brightnessrgb:any=0;
@@ -127,8 +128,5 @@ public switchstatusText:any;
 }
 
 
-export class ColorpickerslidePage {
-  	
-}
 
 

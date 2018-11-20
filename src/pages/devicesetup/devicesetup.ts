@@ -5,6 +5,7 @@ import { WifisetupPage } from '../../pages/wifisetup/wifisetup';
 
 import { ApiProvider } from '../../providers/api/api';
 
+
 /**
  * Generated class for the DevicesetupPage page.
  *
@@ -15,7 +16,8 @@ import { ApiProvider } from '../../providers/api/api';
 @IonicPage()
 @Component({
   selector: 'page-devicesetup',
-  templateUrl: 'devicesetup.html',
+  templateUrl: 'devicesetup.html'
+  
 })
 export class DevicesetupPage {
 
@@ -24,8 +26,10 @@ export class DevicesetupPage {
   data: any;
   loading:any;
   responseData : any;
-  
-  constructor(public apiProvider: ApiProvider,public navCtrl: NavController, public params: NavParams, public loadingCtrl: LoadingController) {
+  DeviceData : any;
+
+  constructor(public apiProvider: ApiProvider,public navCtrl: NavController,
+   public params: NavParams, public loadingCtrl: LoadingController) {
     this.scannedCode = params.get('scannedCode');
     this.data = {};
     this.data.device = {};
@@ -40,7 +44,7 @@ export class DevicesetupPage {
    // this.Users();
     this.data.manufacturer = 'Kushall.COM';
     //this.data.
-    //this.DeviceData = params.get('deviceData');
+    this.DeviceData = localStorage.getItem('getDevicedata');
   }
 
   ionViewDidLoad() {
@@ -59,11 +63,14 @@ export class DevicesetupPage {
       console.log(this.data.device);
     var data = {device:this.data.device,userid: this.data.userid};
      console.log(data);
-
-     this.apiProvider.addDevice(this.data).then((result) =>
+    
+    localStorage.setItem('addDevicedata', this.data);
+    
+    this.apiProvider.addDevice(this.data).then((result) =>
               {
                 this.responseData = result;
                 console.log(this.responseData);
+                
                 this.navCtrl.push(WifisetupPage);
 
               },error => {

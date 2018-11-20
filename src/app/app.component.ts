@@ -30,6 +30,7 @@ import { ColorpickersliderPage } from '../pages/colorpickerslider/colorpickersli
 import { PrivacypolicyPage } from '../pages/privacypolicy/privacypolicy';
 import { TermsofusePage } from '../pages/termsofuse/termsofuse';
 import { SupportPage } from '../pages/support/support';
+import { UpdateDevicePage } from '../pages/update-device/update-device';
 //import { FeedbackPage } from '../pages/feedback/feedback';
 
 @Component({

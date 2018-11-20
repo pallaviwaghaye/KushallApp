@@ -43,6 +43,7 @@ import { PrivacypolicyPage } from '../pages/privacypolicy/privacypolicy';
 import { TermsofusePage } from '../pages/termsofuse/termsofuse';
 import { SupportPage } from '../pages/support/support';
 import { FeedbackPage } from '../pages/feedback/feedback';
+import { UpdateDevicePage } from '../pages/update-device/update-device';
 
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { ApiProvider } from '../providers/api/api';
@@ -82,7 +83,8 @@ import { HttpClientModule } from '@angular/common/http';
     TermsofusePage,
     SupportPage,
     FeedbackPage,
-    FirmwareupdatePage
+    FirmwareupdatePage,
+    UpdateDevicePage
   ],
   imports: [
     BrowserModule,
@@ -122,7 +124,8 @@ import { HttpClientModule } from '@angular/common/http';
     TermsofusePage,
     SupportPage,
     FeedbackPage,
-    FirmwareupdatePage
+    FirmwareupdatePage,
+    UpdateDevicePage
   ],
   providers: [
     StatusBar,

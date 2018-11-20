@@ -175,8 +175,9 @@ export class ApiProvider {
 			});
 
 	  });
-	}
-
+	}*/
+	
+/*
 	getDeviceStatus(data)
 	{
 		return new Promise((resolve,reject) => {
@@ -196,7 +197,7 @@ export class ApiProvider {
 
 	  });
 	}
-
+*/
 	updateDevice(data)
 	{
 		return new Promise((resolve,reject) => {
@@ -213,7 +214,6 @@ export class ApiProvider {
 				console.log(err);
 				reject(err);
 			});
-
 	  });
 	}
 
@@ -236,7 +236,7 @@ export class ApiProvider {
 
 	  });
 	}
-*/
+
 
 	getDevices(data)
 	{
@@ -253,6 +253,58 @@ export class ApiProvider {
 				// var obj = JSON.parse(data['_body']);
 				// console.log(obj);
 				resolve(data);
+			}, err => {
+				console.log(err);
+				reject(err);
+			});
+
+	  });
+	}
+
+	//https://api.kushall.com/AddorUpdateSchedule
+
+	AddorUpdateSchedule(sdata)
+	{
+		return new Promise((resolve,reject) => {
+			let headers = new HttpHeaders();
+			headers = headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+			console.log();
+			//headers =headers.append('Content-Type', 'application/x-www-form-urlencoded');
+			headers = headers.append("Accept", 'application/json');
+			headers = headers.append('Content-Type', 'application/json');
+
+			this.http.post(this.apiUrl+'/AddorUpdateSchedule',JSON.stringify(sdata),{headers: headers})
+			.subscribe(data => {
+				// var obj = JSON.parse(data['_body']);
+				// console.log(obj);
+				resolve(data);
+				console.log(data);
+			}, err => {
+				console.log(err);
+				reject(err);
+			});
+
+	  });
+	}
+
+	//https://api.kushall.com/execdevice
+
+	execdevice(data)
+	{
+		return new Promise((resolve,reject) => {
+			let headers = new HttpHeaders();
+			headers = headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+			console.log();
+			//headers =headers.append('Content-Type', 'application/x-www-form-urlencoded');
+			headers = headers.append("Accept", 'application/json');
+			headers = headers.append('Content-Type', 'application/json');
+
+			this.http.post(this.apiUrl+'/execdevice',JSON.stringify(data),{headers: headers})
+			.subscribe(data => {
+				// var obj = JSON.parse(data['_body']);
+				// console.log(obj);
+				resolve(data);
+				console.log(data);
 			}, err => {
 				console.log(err);
 				reject(err);
